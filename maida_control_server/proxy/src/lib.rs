@@ -75,15 +75,17 @@ async fn handle_proxy_request(mut req: Request<Body>) -> Result<Response<Body>> 
                             }else{
                                 let res= maimai_handle(full_url,req.headers).await;
                                 match res {
-                                    Ok(login)=>{
+                                    Ok((login,open_user_id))=>{
                                         let redirect_url = format!(
-                                            "http://192.168.0.16:5173/home?user_id={}&open_game_id={}&session_id={}&user_play_flag={}&new_user_id_flag={}&open_game_id_flag={}",
+                                            "http://192.168.10.9:5173/home?user_id={}&open_game_id={}&session_id={}&user_play_flag={}&new_user_id_flag={}&open_game_id_flag={}&open_user_id={}",
                                             login.user_id,
                                             login.open_game_id,
                                             login.session_id,
                                             login.user_play_flag,
                                             login.new_user_id_flag,
-                                            login.open_game_id_flag
+                                            login.open_game_id_flag,
+                                            open_user_id
+
                                         );
                                         println!("{}", redirect_url);
                                         let response = format!(
@@ -202,14 +204,14 @@ async fn handle_proxy_request(mut req: Request<Body>) -> Result<Response<Body>> 
     }
 }
 
-#[tokio::main]
-async fn main() {
+
+pub async fn service() {
     let addr = SocketAddr::from(([0, 0, 0, 0], 9854));
     let make_svc = make_service_fn(|_conn| async {
         Ok::<_, Infallible>(service_fn(handle_proxy_request))
     });
     let server = Server::bind(&addr).serve(make_svc);
-    println!("Reqwest 转发代理正在监听 {}", addr);
+    println!("代理监听在 http://{}", addr);
     if let Err(e) = server.await {
         eprintln!("服务器错误: {}", e);
     }
