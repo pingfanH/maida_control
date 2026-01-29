@@ -3,6 +3,9 @@ mod maimai;
 use std::convert::Infallible;
 use std::net::SocketAddr;
 use hyper::{Body, Request, Response, Server, Method, Error};
+use hyper::body::to_bytes;
+use hyper::http::header;
+use reqwest::header as reqwest_header;
 use hyper::service::{make_service_fn, service_fn};
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use std::io::Write;
@@ -130,7 +133,72 @@ async fn handle_proxy_request(mut req: Request<Body>) -> Result<Response<Body>> 
 
         Ok(Response::builder().status(200).body(Body::empty()).unwrap())
     } else {
-        Ok(Response::builder().status(400).body(Body::from("use Proxy pls.")).unwrap())
+        let host = req
+            .headers()
+            .get(header::HOST)
+            .and_then(|v| v.to_str().ok())
+            .unwrap_or_default()
+            .to_string();
+        if host != "tgk-wcaime.wahlap.com" {
+            return Ok(Response::builder()
+                .status(403)
+                .body(Body::from("blocked: host not allowed"))
+                .unwrap());
+        }
+
+        let path_and_query = req
+            .uri()
+            .path_and_query()
+            .map(|pq| pq.as_str())
+            .unwrap_or("/");
+        let target_url = format!("https://tgk-wcaime.wahlap.com{}", path_and_query);
+        println!("[HTTP] forward {} {}", req.method(), target_url);
+
+        let body = to_bytes(req.body_mut()).await.unwrap_or_default();
+        let client = reqwest::Client::builder()
+            .redirect(Policy::none())
+            .build()?;
+        let method = reqwest::Method::from_bytes(req.method().as_str().as_bytes())?;
+        let mut rb = client.request(method, &target_url).body(body.to_vec());
+
+        for (name, value) in req.headers().iter() {
+            if name == header::HOST
+                || name == header::CONNECTION
+                || name == header::CONTENT_LENGTH
+                || name.as_str().eq_ignore_ascii_case("proxy-connection")
+            {
+                continue;
+            }
+            let Ok(rn) = reqwest_header::HeaderName::from_bytes(name.as_str().as_bytes()) else {
+                continue;
+            };
+            let Ok(rv) = reqwest_header::HeaderValue::from_bytes(value.as_bytes()) else {
+                continue;
+            };
+            rb = rb.header(rn, rv);
+        }
+
+        let res = rb.send().await?;
+        let status = res.status();
+        let mut builder = Response::builder().status(
+            hyper::StatusCode::from_u16(status.as_u16()).unwrap_or(hyper::StatusCode::BAD_GATEWAY),
+        );
+        for (name, value) in res.headers().iter() {
+            if name.as_str().eq_ignore_ascii_case("transfer-encoding")
+                || name.as_str().eq_ignore_ascii_case("content-length")
+            {
+                continue;
+            }
+            let Ok(hn) = hyper::http::HeaderName::from_bytes(name.as_str().as_bytes()) else {
+                continue;
+            };
+            let Ok(hv) = hyper::http::HeaderValue::from_bytes(value.as_bytes()) else {
+                continue;
+            };
+            builder = builder.header(hn, hv);
+        }
+        let bytes = res.bytes().await?;
+        Ok(builder.body(Body::from(bytes))?)
     }
 }
 

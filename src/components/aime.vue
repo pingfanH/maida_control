@@ -6,7 +6,8 @@ if (localStorage.getItem("user_id")){
   router.push({ path: '/home' });
 }
 
-location.href="http://tgk-wcaime.wahlap.com/wc_auth/oauth/authorize/maimai-dx";
+const redirectBase = encodeURIComponent(window.location.origin);
+location.href = `/mc/oauth/authorize/maimai-dx?redirect_base=${redirectBase}`;
 </script>
 
 <template>
