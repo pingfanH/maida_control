@@ -1,0 +1,5 @@
+[env]
+CC_x86_64_unknown_linux_gnu = { value = "zig cc", force = true }
+CXX_x86_64_unknown_linux_gnu = { value = "zig c++", force = true }
+CFLAGS_x86_64_unknown_linux_gnu = { value = "-target x86_64-linux-gnu", force = true }
+CXXFLAGS_x86_64_unknown_linux_gnu = { value = "-target x86_64-linux-gnu", force = true }

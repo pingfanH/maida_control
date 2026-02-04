@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes" />
+	<script>
+		var baseW = 768;
+		var iOSW = 0;
+		var ua = navigator.userAgent.toLowerCase();
+		var isiOS = (ua.indexOf("iphone") > -1) || (ua.indexOf("ipod") > -1) || (ua.indexOf("ipad") > -1);
+		if(isiOS){
+			iOSW = document.documentElement.clientWidth;
+		}
+		window.addEventListener("resize", updateMetaViewport, false);
+		window.addEventListener("orientationchange", updateMetaViewport, false);
+		var ev = document.createEvent("UIEvent");
+		ev.initEvent("resize", true, true)
+		window.dispatchEvent(ev);
+		function updateMetaViewport(){
+			var viewportContent;
+			var w = window.outerWidth;
+			if(isiOS){
+				w = iOSW;
+			}
+			if(w < baseW){
+				viewportContent = "width=480,initial-scale=" + w/480 + ",user-scalable=yes,shrink-to-fit=no";
+			}else{
+				viewportContent = "width=device-width,initial-scale=1.0,user-scalable=yes,shrink-to-fit=no";
+			}
+			document.querySelector("meta[name='viewport']").setAttribute("content", viewportContent);
+		}
+	</script>
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8; IE=EmulateIE9" />
+	<meta http-equiv="Pragma" CONTENT="no-cache">
+	<meta http-equiv="Cache-Control" CONTENT="no-cache">
+	<meta http-equiv="Expires" CONTENT="-1">
+	<meta name="robots" content="INDEX, FOLLOW" />
+	<meta name="author" content="(C) SEGA">
+	<meta name="copyright" content="&copy;SEGA">
+	<meta name="description" content="此网页可浏览SEGA(世嘉)音乐机台「舞萌DX」的个人游戏记录。">
+	<meta name="keywords" content="舞萌DX,maimai DX,maimai deluxe,sega" />
+	<meta name="theme-color" content="#51bcf3">
+	<meta name="mkd" content="">
+
+	<title>舞萌DX－收藏曲目列表－</title>
+	<link rel="stylesheet" href="https://maimai.wahlap.com/maimai-mobile/css/modaal.min.css" />
+	<link rel="stylesheet" href="https://maimai.wahlap.com/maimai-mobile/css/common.css?ver=1.50?20250117" />
+	<link rel="stylesheet" href="https://maimai.wahlap.com/maimai-mobile/css/unique.css?ver=1.50?20250117" />
+	<link rel="apple-touch-icon-precomposed" href="https://maimai.wahlap.com/maimai-mobile/apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="https://maimai.wahlap.com/maimai-mobile/apple-touch-icon.png">
+<!--
+ここに百度統計のスクリプト追加予定
+-->
+</head>
+<body oncontextmenu="return false;">
+	<div class="wrapper t_c">
+					<div class="spmenu_toggle"></div>
+			<nav class="spmenu_navigation" style="display:none">
+				<img src="https://maimai.wahlap.com/maimai-mobile/img/menu_title.png" class="w_320 m_t_20"/>
+				<div class="container p_10 f_0">
+					<div class="p_5">
+						<div class="d_ib col2"><a href="https://maimai.wahlap.com/maimai-mobile/home/"><img src="https://maimai.wahlap.com/maimai-mobile/img/menu_home.png" class="w_112"/></a></div>
+						<div class="d_ib col2"><a href="https://maimai.wahlap.com/maimai-mobile/playerData/"><img src="https://maimai.wahlap.com/maimai-mobile/img/menu_playerdata.png" class="w_112"/></a></div>
+					</div>
+					<div class="p_5">
+						<div class="d_ib col2"><a href="https://maimai.wahlap.com/maimai-mobile/friend/"><img src="https://maimai.wahlap.com/maimai-mobile/img/menu_friend.png" class="w_112"/></a></div>
+						<div class="d_ib col2"><a href="https://maimai.wahlap.com/maimai-mobile/shop/"><img src="https://maimai.wahlap.com/maimai-mobile/img/menu_shop.png" class="w_112"/></a></div>
+					</div>
+					<div class="p_5">
+						<div class="d_ib col2"><a href="https://maimai.wahlap.com/maimai-mobile/record/"><img src="https://maimai.wahlap.com/maimai-mobile/img/menu_record.png" class="w_112"/></a></div>
+						<div class="d_ib col2"><a href="https://maimai.wahlap.com/maimai-mobile/map/"><img src="https://maimai.wahlap.com/maimai-mobile/img/menu_map.png?ver=1.50" class="w_112"/></a></div>
+					</div>
+					<div class="p_5 p_b_10">
+						<div class="d_ib col2"><a href="https://maimai.wahlap.com/maimai-mobile/collection/"><img src="https://maimai.wahlap.com/maimai-mobile/img/menu_collection.png" class="w_112"/></a></div>
+<!--
+-->
+					</div>
+				</div>
+			</nav>
+				<a href="https://maimai.wahlap.com/maimai-mobile/home/"><img src="https://maimai.wahlap.com/maimai-mobile/img/logo.png" class="logo p_5"/></a>
+					<a href="https://maimai.wahlap.com/maimai-mobile/home/userOption/" class="setting"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_setting.png" /></a>
+			</div>
+	<div class="wrapper main_wrapper t_c o_v">
+		<header class="f_0">
+				<div class="f_0">
+	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 480 10" preserveAspectRatio="none" style="height:10px">
+		<path d="M0,10 v-5 q5,5 10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 v5 Z" fill="#7ed3ff"></path>
+	</svg>
+	<div class="menu">
+		<a href="https://maimai.wahlap.com/maimai-mobile/home/" class="d_ib col4 p_4"><img src="https://maimai.wahlap.com/maimai-mobile/img/menu_home_on.png?ver=1.50" class="w_112"/></a>
+		<a href="https://maimai.wahlap.com/maimai-mobile/playerData/" class="d_ib col4 p_4"><img src="https://maimai.wahlap.com/maimai-mobile/img/menu_playerdata.png?ver=1.50" class="w_112"/></a>
+		<a href="https://maimai.wahlap.com/maimai-mobile/friend/" class="d_ib col4 p_4"><img src="https://maimai.wahlap.com/maimai-mobile/img/menu_friend.png?ver=1.50" class="w_112"/></a>
+		<a href="https://maimai.wahlap.com/maimai-mobile/shop/" class="d_ib col4 p_4"><img src="https://maimai.wahlap.com/maimai-mobile/img/menu_shop.png?ver=1.50" class="w_112"/></a>
+	</div>
+	<div class="menu">
+		<a href="https://maimai.wahlap.com/maimai-mobile/record/" class="d_ib col4 p_4"><img src="https://maimai.wahlap.com/maimai-mobile/img/menu_record.png?ver=1.50" class="w_112"/></a>
+		<a href="https://maimai.wahlap.com/maimai-mobile/map/" class="d_ib col4 p_4"><img src="https://maimai.wahlap.com/maimai-mobile/img/menu_map.png?ver=1.50" class="w_112"/></a>
+		<a href="https://maimai.wahlap.com/maimai-mobile/collection/" class="d_ib col4 p_4"><img src="https://maimai.wahlap.com/maimai-mobile/img/menu_collection.png?ver=1.50" class="w_112"/></a>
+	</div>
+	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 480 10" preserveAspectRatio="none" style="height:10px">
+		<path d="M0,0 v5 q5,5 10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 v-5 Z" fill="#7ed3ff"></path>
+	</svg>
+</div>
+		</header>
+
+				<img src="https://maimai.wahlap.com/maimai-mobile/img/title_setting.png" class="title m_10 m_t_15"/>
+<div class="town_block m_l_10 m_r_10 p_10 p_b_0 t_c f_0">
+	<div class="m_10"><img src="https://maimai.wahlap.com/maimai-mobile/img/title_option_favmusic.png"/></div>
+	<div class="p_5 f_14">收藏曲目&nbsp;<span name="favoriteCount" class="f_16 f_b">30</span>/30</div>
+	<button type="button" onclick="location.href='https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/updateMusic'"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_change.png" class="m_t_10 h_50"/></button>
+	</div>
+				<div class="scroll_point screw_block m_15 m_l_10 m_r_10 f_15 p_s">流行&amp;动漫</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/9e8c84f25675f149.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_dx.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">HUMANBORG</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">SARUKANI</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="29" />
+						<input type="hidden" name="musicId" value="ba38e79ecac4dabf48020dea6311a6271f420b3b662db52f5d2275a0cc8f691a4534ccd2fdca0ac4bece9f6daa7466571704b41c9517d7490c65a66091f30410yu/wE9aVS7KPHlzpRRUXWDFr/CfwaZjr8x38bhTENoQ=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/34e32d0a43e43931.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">真・ハンサム体操でズンドコホイ</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">10Re;「学園ハンサム」</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="20" />
+						<input type="hidden" name="musicId" value="c72d9cd38ebaa89fcc8120840b134c5e88d204ce9823bbd7bfd409e183db4ab4ebbc1bfd0b50fdaf6033affe58ff7a84fd496ab59a9e5806af0e9d41031d70f3R5PlsV6sFXP1szH5zDRiIkSYAjXGABiBIV96kFOPC/E=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+							<div class="scroll_point screw_block m_15 m_l_10 m_r_10 f_15 p_s">niconico＆VOCALOID™</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/db70c06c380e264e.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+														<img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+								<img src="https://maimai.wahlap.com/maimai-mobile/img/music_dx.png" class="f_l h_20 p_l_5"/>
+											</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">39</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">sasakure.UK x DECO*27</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="1" />
+						<input type="hidden" name="musicId" value="0e40586d20d5007dab3373569f66d3a71be749844b6788b535124bb0fc3065cb1f82f47df9d7bcd1f3958241a1d110e9b65e46d2b3d3450efba1ca7b2358453cjAnbaOFedUd5SFV2Gpzx451EsVMg0ASNFN4VKEBAVIY=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/dd2686a8aa23107f.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_dx.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">回る空うさぎ</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">Orangestar</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="30" />
+						<input type="hidden" name="musicId" value="c2440e1cb46319ac0648fd8d9266ffa018129da7fec80838722a7a7362b23f59726ead11e2e3ebdbc0e3e75b53a19cc9e42830286c09112223807160b95a54c7eYhgMMpG6k9u/LfP9xb79LLLmwvRI/F/8nDDGEuTdJM=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/dfd85cc1f0611a87.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+														<img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+								<img src="https://maimai.wahlap.com/maimai-mobile/img/music_dx.png" class="f_l h_20 p_l_5"/>
+											</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">ダンスロボットダンス</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">ナユタン星人</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="21" />
+						<input type="hidden" name="musicId" value="61fcc89f079a10fac32badc4a5e2026eff817bb094acd176b0410381ca7dc67ca9fd386f1479a49742278b0f1117574a110f5c01bab09cdda12317d4143a62abLBm0KCndSvoZTN4wbFFawev3ZJzczbKQC8lQQOSfkC8=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/311d40df8438952a.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">マトリョシカ</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">ハチ</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="24" />
+						<input type="hidden" name="musicId" value="e71be10b8a799ab9564aa775c0e2df96a49691e46bb57ba4b2cd6b632b6be622a03c72391bc4c1f7a72f0f02e568f151b2b691b173c5bd30c53c8cea4c3e68dfIRzjgMjWKDi+QmzZGoPe8ns10yyfwgCSN8gxfg6OtIw=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/b6e33b58e573a59b.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">カゲロウデイズ</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">じん</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="2" />
+						<input type="hidden" name="musicId" value="3969b3f337152e8551748d1f33f5e3beeaddcf15db031452bb21788bdc7374037f30312e7f79c35e5aa7bb4bb85d25805b44cf29e6c1109999aefc69363a10bdUFnqo/DQEf/LyIa00u9mFOUIGi+UYT7caIWrkq8yToE=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/2409dc4300acfacf.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">Tell Your World</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">livetune</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="3" />
+						<input type="hidden" name="musicId" value="17c6d5373eab31f795a7645f4468bc858f20f9b65b85b7324bccabdfac6c3b303b2310e0384511bfbe462225fc4ad1b1693527416ee7458fb97e1f43d6e84815pzy2cS99kfsBgAjO/+3OHvo03JPlJ9XJQJh2d2IscVM=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/74f1d3bb32ce7d30.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+														<img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+								<img src="https://maimai.wahlap.com/maimai-mobile/img/music_dx.png" class="f_l h_20 p_l_5"/>
+											</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">深海少女</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">ゆうゆ</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="4" />
+						<input type="hidden" name="musicId" value="7e59e8600848330a150d5a37fb6a5b604ffd8e7865befa03d7a72bea9620d66dd1ae6d979b17f4697eaaf95952b309d6fa90facbff1b5cbdb94dcbde0c9f3fa7GYtHPuiK0ZYU0bOOhbzUuQfoRdXCAvjb9iIY2JCbzrs=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/caa90ebabef5e041.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">木彫り鯰と右肩ゾンビ</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">hanzo/赤飯歌唱Ver</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="23" />
+						<input type="hidden" name="musicId" value="a1ab4baae7970c0713d1b51ac250105cab429c5a682aaa04dda444aafb6bdf4c6ab944a84924ea233fdeb676d3039f6f5178d053af7e74fa551f3aeec91cbaeaHe6fFYh+Efz0CZuEIXdtFAcbw2K4Uy1AdlSs3LJIu1U=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+							<div class="scroll_point screw_block m_15 m_l_10 m_r_10 f_15 p_s">东方Project</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/94d6991c0998cadd.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">緋色のDance</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">岸田教団＆THE明星ロケッツ</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="5" />
+						<input type="hidden" name="musicId" value="1a13281336fd0817030c6440d8f818d4767f17722303089ee214e3e823401afb73c1fe85ae2e6ad7e98ab5b05f15ba252e55ea80bfdb4475b6b71ed976f4f4675420cXsh6UlBn/HcyzmBQT4BUC4z1amGrliI1hTJMSQ=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/5f9f0619083ebab0.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_dx.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">スカーレット警察のゲットーパトロール24時</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">七条レタスグループ</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="28" />
+						<input type="hidden" name="musicId" value="f98ab8a0e1e57379af7f24e66229a8d29b4aecaa0deeee92165158d911528b799819e8e47e511df095888251b087a88626a2e926cd69e9684ccc782149128f00eCDq2yF8cupjysxNiC6CZySjuyN6MX00+UBZIHML564=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/b0cfe0f457175464.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">オーディエンスを沸かす程度の能力 feat.タイツォン</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">D.watt(IOSYS)＋らっぷびと</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="27" />
+						<input type="hidden" name="musicId" value="a9f80579ef8080fb57cff8a9136a469a8d2ff70b0994db57e6eca5518dfd749c2e04f2bc6b77d0a37a861d9e0cdd227973b575a5ea68d07ada289e1576a76b17+xOWpLyUPJgg+bxNGI5oK7eHUG66t3ivs86aLDweQ7A=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+							<div class="scroll_point screw_block m_15 m_l_10 m_r_10 f_15 p_s">其他游戏</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/da71e058b62ac120.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">夜明けまであと３秒</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">BNSI（Taku Inoue）「シンクロニカ」より</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="6" />
+						<input type="hidden" name="musicId" value="4b996ff389e5830007161494ab36d008de023800ef27d90ee2789bc1b04a0ef6b8cd9133a1d16fef26c51c0c6b58c15bac34362ed73a5276e0be14be6f809a3aXis7qLp+ny8qOBCyQmGHPJFcd3zfHVbM1JAcMQk1ZBE=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/020b7a4dea021d7e.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_dx.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">ULTRA SYNERGY MATRIX</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">Tanchiky</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="7" />
+						<input type="hidden" name="musicId" value="334cc52e90c710798830d7d3c9ce48a6695db5457bac031f80fc242b92cfc661f21139ac027a427306c00100a33e8856fb661db50700f6f5ee8593296fd0307bg0d58UELIJvLwzzR7erdcLxn4TgQQzHRc7urZlGrUTo=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/94e158c4f52c7c52.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_dx.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">Caterpillar Song</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">Bitplane feat. 葉月ゆら</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="8" />
+						<input type="hidden" name="musicId" value="e30ef3c0796674fecc7c2d3c35da9ad24dc592b34ed390742f51d1925994ad993bcbc5e882eb9245f0aca091a553b342e5638e1e765b6247cc2c5883f416e0d8qRBJ9cswAmA+EcmQAm7KhaTGFLjmG1wD6jssazExnhY=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/60545b69d517fb30.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">B.B.K.K.B.K.K.</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">nora2r</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="9" />
+						<input type="hidden" name="musicId" value="8437e658c911614707e45842772361a6adccb5f9fbb3599d7a40960fa93f1a6da13d3090605d96ffb294497bf3893daa30c8ac5a12e72870cc28a5f454959a576YDBNiLUwb+p6Hgv01+d1jrfA5dJksEyNFmJoHciD0g=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/c0924efcbefbaf6c.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">魔法少女になるしかねぇ</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">ねこみりん feat.小宮真央</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="10" />
+						<input type="hidden" name="musicId" value="c10d7107ac27cffed74645b1359471b99ca13145f9b5dc970a4585a3360bdc83e305b2e9274f1658045672051c9602c3671a16e2de60d89d592603b24d56d959LohinTHIWr7tRbgEAoTl5EWje3z0PKrgoWZk+iTdV5k=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/243925fb558d75b6.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">Burning Hearts ～炎のANGEL～</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">幡谷尚史 Arranged by SEGA Sound Unit [H.]「バーニングレンジャー」</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="11" />
+						<input type="hidden" name="musicId" value="8e67ad1a4614159fee5fc232547bcaaa04bb47214954282a5ba98195c1e896eb0126cb85362d80267683433c99ced1697494f4103ef38ef963bf435f25bcbb06ZNamoDVE6nh/1m9lyrOEbH3YZYSl3Db/2F6VMxb+aBI=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/489d5189ec8e2a11.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">RIDGE RACER STEPS -GMT remix-</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">Yuji Masubuchi(BNGI)「RIDGE RACER」</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="12" />
+						<input type="hidden" name="musicId" value="fb7991ad8c2966eb8337f486d28b28f90e8663fdc7ba4b34494b61fca2b1dd4f122e82464315f090f867ad364940411a1ae4c73e3a3b9cb053841a064fad2ae1kpSegQIugcNWkn5QsRXCcqtWR7xAFMpdLgIgBfZPWRg=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/27f03e7294044bd8.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">Mysterious Destiny</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">「BAYONETTA(ベヨネッタ)」</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="13" />
+						<input type="hidden" name="musicId" value="0bf33309985c0e76b46ef86b6e2b9cae420110b5226758c7e6b97b905b4788a8964945ee6486f20684000b9c855ce9680a7441a51c1c4244cb8bea0014fe204elwuzJ7oTPRkOsPgU21muskP699OTyOqNtHxB2Lr0BHI=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/1cb40b23f3af8305.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">Save This World νMIX</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">「PHANTASY STAR PORTABLE」</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="14" />
+						<input type="hidden" name="musicId" value="76613e1dae46b0e74c3e3ea8d706b4cf18569909583b2c29158afc8156d9e155a2e5b50616012dd45b039b22ea292f7fdd5ebdf3f723016d41b02ac77837c5ab9kyoDKwtRWkWFxzHZ7PPQOD645gRnSBGJNKfthEzp98=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+							<div class="scroll_point screw_block m_15 m_l_10 m_r_10 f_15 p_s">舞萌</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/52e9a79b5e6a2ef5.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">花と、雪と、ドラムンベース。</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">kanone feat. せんざい</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="15" />
+						<input type="hidden" name="musicId" value="b8ea940538cdf178c3ff53b1a18c409335b024783dfa9c2e55fce69afdcdb4cebfeda1d5f099189da440d0bfefbd2eaa44c0cfdda34a275ca7ee119cdaf64ed6Sh6rspW8jicnViWxdTbHmXFvCC/0CxBw6X/ODj7KhuQ=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/7e09354e3062f772.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">Heartbeats</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">RAMM feat. 若井友希</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="16" />
+						<input type="hidden" name="musicId" value="27e9d076b3286dbf68b7d576b72a7759f1b20eb0ccdc98af54e01202510f74b23027b1ed73b1d67627a1681e171e6b52b785b2cb5fc9cc2145acf6e1031231c6t+imK8hl9XN67rFOTTgNQwB6MWDaEYy0ymoxFv/5NzA=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/4014389349bb320b.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_dx.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">The Great Banquet</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">Iris</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="25" />
+						<input type="hidden" name="musicId" value="349331b7cb5971257605a1f1929ba187a04b9dca40e179c31fceb33ec283fe5aa563e19d809ee7d76e6720c0ca18edcf7f6225be10b6db5edf0d42a24a28a5b5wPpkpywODDlhCQ4m6qg2gpPOOtP05IwKEbKgrHKIczQ=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/b7884713b914d359.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_dx.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">Last Samurai</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">Street</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="17" />
+						<input type="hidden" name="musicId" value="9a62fd2f9eca95de978b7eaffcb4b5299797432f4bd59208d8162d167144793708ce027c82565237c532c80906a036588a44b7cfbdfa19dc26119e2c6ff8765dELjSc0/gJqkUdF7ilYpiUExzUKivzs2Czn0gnTNvTY0=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/2894412cc7a3cf4e.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">四月の雨</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">cubesato</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="22" />
+						<input type="hidden" name="musicId" value="5a492fa9f6e373a6fc93637751fa2d51f41a18b8da1070f0a01f4b22e8ea6bbd71da507626996bafa7c5cd95254bb59906d277acd95a302d08f7aa0c1c5bb6batDUz+fKGg8XrufYqdsrLqRfm5fRiPBZdURiDgZUCWvc=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/866ca42598db8c01.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">FFT</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">cybermiso</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="18" />
+						<input type="hidden" name="musicId" value="8abdecfa5f667ecac112d39856c0d7a560d965f2834c9a374a4742ffa8ada37b9dee7e6331fe4808c8a4866edce6523c69bf8fa548ec9e521d2c33c2867966ebCZunJOHLwoc4J6JJ8aOLswNuU/tpbfwuAPa0mr9nTE0=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/d95b9e9492d691ec.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_dx.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">バーチャルダム　ネーション</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">Sampling Masters MEGA</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="26" />
+						<input type="hidden" name="musicId" value="c89df8293ec9412bbecbae28fe78641bde32ae8f5dbbdf800e0bb54da1ded62625153a3d012f4ad167f39d653ca5deed4567e959aa60f4b640526edfc24007b505Dd9L7UAbwRU0Hvhzj94a5WZsdGc6BCoNMGqJVYiDA=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<div class="basic_block p_r m_10 m_t_0 m_b_15 p_5">
+				<img loading="lazy" src="https://maimai.wahlap.com/maimai-mobile/img/Music/1302aa1b571e7ef0.png" class="music_img w_180 m_5 f_l"/>
+				<div class="w_250 p_l_5 f_l t_l">
+					<div class="m_5">
+						 <img src="https://maimai.wahlap.com/maimai-mobile/img/music_standard.png" class="f_l h_20"/>
+												</div>
+					<div class="clearfix"></div>
+					<div class="m_5 m_r_0 f_15">Beat of getting entangled</div>
+					<hr class="w_250">
+					<div class="m_5 m_r_0 f_12">Shoichiro Hirata</div>
+					<form action="https://maimai.wahlap.com/maimai-mobile/home/userOption/favorite/musicList/favoriteDrop/" method="post" accept-charset="utf-8" class="h_35">
+						<input type="hidden" name="orderId" value="19" />
+						<input type="hidden" name="musicId" value="582f39ffc1f35ba730390cc14afb3a5e871ea297fe58833899ae0e9245695afe8de9b6b036aa3ee4633a6a11c529668d77ab0018d58e173c84a9e3abcb212f64v0j6yPeqBoK9LcfAWtwcJAJhDWzr3XTDpVzvFnogXhg=" />
+						<input type="hidden" name="token" value="cb2d3ca96c20f66ffc34b96b12cc2991" />
+						<button type="submit"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_favorite_off.png" class="h_50 p_r_10 link_block pointer"></button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+					<img src="https://maimai.wahlap.com/maimai-mobile/img/line_02.png" class="w_450 m_t_10" />
+<div class="t_c">
+	<button type="button" onclick="location.href='https://maimai.wahlap.com/maimai-mobile/home/userOption/';" class="f_0"><img src="https://maimai.wahlap.com/maimai-mobile/img/btn_back.png" class="w_80 m_t_10"/></button>
+</div>
+
+		<footer class="f_0">
+			<div class="footer_marquee">
+			<div class="footer w_480">
+				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 480 50" preserveAspectRatio="none" style="height:50px">
+					<path d="M0,0 v25 q5,5 10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 t10,0 v-25 Z" fill="#7cbc29"></path>
+				</svg>
+				<div class="m_15 m_t_0 f_13">
+					<div class="m_5"><a href="https://maimai.wahlap.com/maimai-mobile/termsOfService/" target="_blank" class="white" rel="noopener">使用条款</a></div>
+					<div class="m_5"><a href="https://maimai.wahlap.com/maimai-mobile/sitePolicy/" target="_blank" class="white" rel="noopener">使用须知</a></div>
+					<div class="m_5"><a href="https://www.segafave.co.jp/en/privacy/" target="_blank" class="white" rel="noopener">私隐政策</a></div>
+				</div>
+				<img src="https://maimai.wahlap.com/maimai-mobile/img/line_02.png" class="w_430 m_b_10" />
+				<div class="f_l m_15 m_l_30 p_l_10">
+					<a href="http://sega.jp" target="_blank" rel="noopener"><img src="https://maimai.wahlap.com/maimai-mobile/img/logo_sega.png" /></a>
+					<div class="f_15 p_5">© SEGA</div>
+				</div>
+				<div class="m_15">
+					<img src="https://maimai.wahlap.com/maimai-mobile/img/logo_wahlap.png" /></a>
+					<div class="f_11 p_3"><a href="http://www.miitbeian.gov.cn" style="text-decoration:none; color: #fff" target="_blank" rel="noopener">粤ICP备05005783号</a></div>
+				</div>
+							</div>
+			</div>
+		</footer>
+	</div>
+	<img id="page-top" src="https://maimai.wahlap.com/maimai-mobile/img/btn_page_top.png" class="pointer">
+	<img id="page-bottom" src="https://maimai.wahlap.com/maimai-mobile/img/btn_page_bottom.png" class="pointer">
+	<script src="https://maimai.wahlap.com/maimai-mobile/js/jquery-3.3.1.min.js"></script>
+	<script src="https://maimai.wahlap.com/maimai-mobile/js/modaal.min.js"></script>
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-136087881-2', 'auto');
+		ga('send', 'pageview');
+
+		var scrollPoint = $('.scroll_point').length;
+		$('#page-top').click(function () {
+			if (scrollPoint > 0) {
+				var fromPos = Math.floor($(window).scrollTop());
+				var toPos   = 0;
+				$(".scroll_point").each(function() {
+					var targetPos = Math.floor($(this).offset().top);
+					if (location.pathname.split('/').pop() == "updateMusic") {
+						targetPos = targetPos - 284;
+					}
+					if (fromPos > targetPos) {
+						toPos = targetPos;
+					} else {
+						return false;
+					}
+				});
+				$('body,html').animate({scrollTop: toPos}, 500);
+			} else {
+				$('body,html').animate({scrollTop: 0}, 500);
+			}
+			return false;
+		});
+		$('#page-bottom').click(function () {
+			if (scrollPoint > 0) {
+				var fromPos = Math.floor($(window).scrollTop()) + 3;
+				var toPos   = Math.floor($(document).height());
+				$(".scroll_point").each(function() {
+					var targetPos = Math.floor($(this).offset().top);
+					if (location.pathname.split('/').pop() == "updateMusic") {
+						targetPos = targetPos - 284;
+					}
+					if (fromPos < targetPos) {
+						toPos = targetPos;
+						return false;
+					}
+				});
+				$('body,html').animate({scrollTop: toPos}, 500);
+			} else {
+				$('body,html').animate({scrollTop: $(document).height()}, 500);
+			}
+			return false;
+		});
+		function fadeOutPageBtn() {
+			$('#page-top').fadeOut(1500).animate({duration: 'slow', easing: 'linear'});
+			$('#page-bottom').fadeOut(1500).animate({duration: 'slow', easing: 'linear'});
+		}
+					var spmenu_toggle = $('.spmenu_toggle');
+			var spmenu_navigation = $('.spmenu_navigation');
+			spmenu_toggle.click(function() {
+				$(this).toggleClass('active');
+				if ($(this).hasClass('active')) {
+					spmenu_navigation.addClass('active');
+				} else {
+					spmenu_navigation.removeClass('active');
+				}
+			});
+			spmenu_navigation.click(function() {
+				spmenu_toggle.removeClass('active');
+				$(this).removeClass('active');
+			});
+				var timeLimit = 3*1000;
+		var timerId = setTimeout(fadeOutPageBtn, timeLimit);
+		$(window).scroll(function() {
+			if (!spmenu_navigation.is(':visible')) spmenu_navigation.css('display', 'block');
+			if (!$('#page-top').is(':visible')) $('#page-top').fadeIn();
+			if (!$('#page-bottom').is(':visible')) $('#page-bottom').fadeIn();
+			clearTimeout(timerId);
+			timerId = setTimeout(fadeOutPageBtn, timeLimit);
+							var visible = spmenu_toggle.is(':visible');
+				if ($(this).scrollTop() > 250) {
+					if (!visible)
+						spmenu_toggle.fadeIn().animate({'right': '5px'}, {duration: 500, queue: false});
+				} else {
+					if (visible) {
+						spmenu_toggle.fadeOut().animate({'right': '-100%'}, {duration: 500, queue: false});
+						if (spmenu_toggle.hasClass('active')) {
+							spmenu_toggle.removeClass('active');
+							spmenu_navigation.removeClass('active');
+						}
+					}
+				}
+					});
+	</script>
+	<script>
+$('div.favorite_off').click(function(){
+	var form = $(this).parents('form');
+	if (form.length > 0) {
+		form.submit();
+		return true;
+	} else {
+		return false;
+	}
+});
+</script>
+</body>
+</html>

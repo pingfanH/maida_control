@@ -1,0 +1,17 @@
+port: 7890
+socks-port: 7891
+mode: rule
+log-level: info
+proxies:
+  - name: YaMaiDa
+    server: maida-proxy.pingfanh.top
+    port: 9854
+    type: http
+proxy-groups:
+  - name: default
+    type: select
+    proxies:
+      - YaMaiDa
+rules:
+  - DOMAIN-SUFFIX,tgk-wcaime.wahlap.com,default
+  - MATCH,DIRECT

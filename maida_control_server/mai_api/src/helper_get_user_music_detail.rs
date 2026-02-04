@@ -68,7 +68,7 @@ pub async fn upsert_user_music_detail(
     for song in songs {
 
         let song_id = song.get("musicId").unwrap().as_i64().unwrap() as i32;
-        if let Some(_song) = get_music_data(song_id){
+        if let Some(_song) = get_music_data(song_id).await {
             println!("{song:?}");
             // 创建新的 ActiveModel 对象
             let achieve = song["achievement"].as_i64().unwrap_or(0) as i32;
@@ -125,7 +125,9 @@ pub async fn parse_user_full_music_detail(user_full_music_detail_list: Vec<serde
         println!("{detail}");
         music_detail_list.push(json!({
             "id": detail["musicId"].as_i64().unwrap_or(0) as i32,
-            "歌名": get_music_title(detail["musicId"].as_i64().unwrap_or(0) as i32).unwrap_or("？？？".to_string()),
+            "歌名": get_music_title(detail["musicId"].as_i64().unwrap_or(0) as i32)
+                .await
+                .unwrap_or("？？？".to_string()),
             "难度": detail["level"],
             "分数": detail["achievement"].as_f64().unwrap_or(0.0) / 10000.0,
             "DX分数": detail["deluxscoreMax"]
@@ -143,7 +145,7 @@ mod tests {
 
     #[tokio::test]
     async fn test_get_user_music_detail() -> Result<()> {
-        load_music_data().ok();
+        load_music_data().await.ok();
         let user_full_music_detail_list = get_user_full_music_detail(TEST_UID).await?;
         println!("{:?}", user_full_music_detail_list.len());
         let parsed_detail = parse_user_full_music_detail(user_full_music_detail_list).await?;

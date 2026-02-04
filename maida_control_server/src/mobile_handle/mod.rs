@@ -20,7 +20,7 @@ pub async fn get_records(user_data: UserData){
     let method = reqwest::Method::GET;
 
     let mut req_builder = client.request(method, &url)
-        .header(COOKIE,format!("_t={};userId={}",user_data.session_id,user_data.open_user_id))
+        .header(COOKIE,format!("_t={};userId={}",user_data.session_id,user_data.user_id))
         ;
    match req_builder.send().await  {
        Ok(res) => {

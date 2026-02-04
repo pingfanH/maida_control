@@ -1,13 +1,32 @@
 <script setup>
-import { useRoute } from 'vue-router'
 import router from "@/lib/router.js";
+import { getOwnHomeData, getSession } from "@/lib/api";
 
-if (localStorage.getItem("user_id")){
-  router.push({ path: '/home' });
-}
+const redirectToOauth = () => {
+  location.href = `http://tgk-wcaime.wahlap.com/wc_auth/oauth/authorize/maimai-dx`;
+};
 
-const redirectBase = encodeURIComponent(window.location.origin);
-location.href = `/mc/oauth/authorize/maimai-dx?redirect_base=${redirectBase}`;
+getSession()
+  .then((res) => {
+    if (!res?.data?.exists) {
+      redirectToOauth();
+      return;
+    }
+    getOwnHomeData()
+      .then((homeRes) => {
+        if (homeRes?.data?.redirect) {
+          redirectToOauth();
+          return;
+        }
+        router.push({ path: '/home' });
+      })
+      .catch(() => {
+        redirectToOauth();
+      });
+  })
+  .catch(() => {
+    redirectToOauth();
+  });
 </script>
 
 <template>

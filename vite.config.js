@@ -19,9 +19,9 @@ export default defineConfig({
                 rewrite: (path) => path.replace(/^\/mc/, '')
             },
             '/api': {
-                target: 'https://tgk-wcaime.wahlap.com',
+                target: 'http://127.0.0.1:9855',
                 changeOrigin: true,
-                rewrite: (path) => path.replace(/^\/api/, '')
+                rewrite: (path) => path.replace(/^\/api/, 'api')
             }
         }
     },
